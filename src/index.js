@@ -1,15 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import SearchBar from './components/SearchBar'
+import config from './config'
+// import SearchBar from './components/SearchBar'
+import GameList from './components/GameList'
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
+window.gl = config
+
 function App() {
   return (
     <div>
-      <SearchBar/>
+      <GameList />
     </div>
 
   );
