@@ -13,7 +13,7 @@ window.gl = config
 function App() {
   return (
     <div>
-      <GameList />
+      caca
     </div>
 
   );
