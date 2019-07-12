@@ -17,6 +17,8 @@ export const Auth0Provider = ({
   const [loading, setLoading] = useState(true);
   const [popupOpen, setPopupOpen] = useState(false);
 
+  console.log('ready')
+
   useEffect(() => {
     const initAuth0 = async () => {
       const auth0FromHook = await createAuth0Client(initOptions);
@@ -28,6 +30,10 @@ export const Auth0Provider = ({
       }
 
       const isAuthenticated = await auth0FromHook.isAuthenticated();
+
+      // const token = await auth0FromHook.getTokenSilently();
+      // console.log(token)
+      console.log(isAuthenticated)
 
       setIsAuthenticated(isAuthenticated);
 
