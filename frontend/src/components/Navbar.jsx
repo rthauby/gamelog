@@ -1,12 +1,14 @@
-import React from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import SearchIcon from '@material-ui/icons/Search';
+import React from 'react'
+import { debounce } from 'lodash'
+import { fade, makeStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import InputBase from '@material-ui/core/InputBase'
+import SearchIcon from '@material-ui/icons/Search'
+import axios from 'axios'
+
+import config from '../config'
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -68,40 +70,25 @@ const useStyles = makeStyles(theme => ({
       display: 'none',
     },
   },
-}));
+}))
 
 export default function PrimarySearchAppBar() {
-  const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [setMobileMoreAnchorEl] = React.useState(null);
+  const classes = useStyles()
 
-  const isMenuOpen = Boolean(anchorEl);
+  const querySearch = debounce((query) => {
+    console.log('search now', query)
 
-  function handleMobileMenuClose() {
-    setMobileMoreAnchorEl(null);
+    axios.get(config.api.local.urls.list)
+      .then((res) => {
+        this.setState({
+          games: res.data
+        })
+      })
+  }, 1000)
+
+  const changeSearchInput = (e) => {
+    querySearch(e.target.value)
   }
-
-  function handleMenuClose() {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  }
-
-  const menuId = 'primary-search-account-menu';
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
-
   return (
     <div className={classes.grow}>
       <AppBar position="static">
@@ -114,6 +101,7 @@ export default function PrimarySearchAppBar() {
               <SearchIcon />
             </div>
             <InputBase
+              onChange={changeSearchInput}
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
@@ -124,7 +112,6 @@ export default function PrimarySearchAppBar() {
           </div>
         </Toolbar>
       </AppBar>
-      {renderMenu}
     </div>
-  );
+  )
 }

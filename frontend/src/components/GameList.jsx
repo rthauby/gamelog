@@ -22,9 +22,9 @@ export default class GameList extends Component {
 
   render() {
     return (
-      <Grid container spacing={24} style={{padding: 24}}>
+      <Grid container spacing={10} style={{padding: '24px'}}>
         {this.state.games.map((game) => {
-          return <Grid item xs={12} sm={6} lg={4} xl={3}>
+          return <Grid key={game.id} item xs={12} sm={6} lg={4} xl={3}>
             <Game game={game} key={game.id} />
           </Grid>
         })}
