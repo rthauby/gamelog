@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid'
 import Game from './Game'
 
 export default function SearchList(props) {
-  console.log(props)
   return (
     <Grid container spacing={10} style={{padding: '24px'}}>
       {props.results.map((game) => {

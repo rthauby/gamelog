@@ -85,7 +85,6 @@ export default function PrimarySearchAppBar(props) {
             ...game
           }
         })
-        console.log(games)
         props.handler(games)
       })
   }, 1000)
