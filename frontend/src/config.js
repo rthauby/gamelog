@@ -6,6 +6,11 @@ const config = {
       urls: {
         ownedGames: `http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${process.env.REACT_APP_STEAM_API_KEY}&steamid=${process.env.REACT_APP_STEAM_ID}&format=json`
       }
+    },
+    local : {
+      urls: {
+        list: 'http://127.0.0.1:8000/api/games?format=json'
+      }
     }
   }
 }
