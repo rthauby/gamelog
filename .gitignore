@@ -71,7 +71,7 @@ frontend/.env.local
 /coverage
 
 # production
-/frontend/build
+frontend/build
 
 # misc
 .DS_Store
