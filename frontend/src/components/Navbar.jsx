@@ -72,17 +72,21 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar(props) {
   const classes = useStyles()
 
   const querySearch = debounce((query) => {
-    console.log('search now', query)
-
-    axios.get(config.api.local.urls.list)
+    axios.get(config.api.local.urls.search + query)
       .then((res) => {
-        this.setState({
-          games: res.data
+        console.log(res.data)
+        const games = res.data.map((game) => {
+          return {
+            title: game.name,
+            description: game.summary,
+            ...game
+          }
         })
+        props.handler(games)
       })
   }, 1000)
 
@@ -91,9 +95,9 @@ export default function PrimarySearchAppBar() {
   }
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position='static'>
         <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography className={classes.title} variant='h6' noWrap>
             Gamelog
           </Typography>
           <div className={classes.search}>
@@ -102,7 +106,7 @@ export default function PrimarySearchAppBar() {
             </div>
             <InputBase
               onChange={changeSearchInput}
-              placeholder="Search…"
+              placeholder='Search…'
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,

@@ -6,6 +6,9 @@ import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import { red } from '@material-ui/core/colors'
+import moment from 'moment'
+
+import utils from '../utils'
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -32,12 +35,13 @@ const useStyles = makeStyles(theme => ({
 
 export default function Game(props) {
   const classes = useStyles()
+  const release_date = moment.unix(props.game.first_release_date).utc().format('MM/DD/YYYY')
 
   return (
     <Card className={classes.card}>
       <CardHeader
         title={props.game.title}
-        subheader="September 14, 2016"
+        subheader={'Released: ' + release_date}
       />
       <CardMedia
         className={classes.media}
@@ -46,8 +50,7 @@ export default function Game(props) {
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+          {utils.trunc(props.game.description, 250)}
         </Typography>
       </CardContent>
     </Card>
