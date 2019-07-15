@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 
 function fetchUrlFromAPI(game) {
   let result =  axios({
-    url: config.api.local.urls.artwork + `${game.id}/${game.artworks[0]}`,
+    url: config.api.local.urls.artwork + `${game.id}`,
     method: 'GET',
   })
     .then(response => {

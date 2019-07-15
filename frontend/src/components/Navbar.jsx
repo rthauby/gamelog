@@ -75,7 +75,19 @@ const useStyles = makeStyles(theme => ({
 export default function PrimarySearchAppBar(props) {
   const classes = useStyles()
 
-  const querySearch = debounce(props.handler, 1000)
+  const querySearch = debounce((query) => {
+    axios.get(config.api.local.urls.search + query)
+      .then((res) => {
+        const games = res.data.map((game) => {
+          return {
+            title: game.name,
+            description: game.summary,
+            ...game
+          }
+        })
+        props.handler(games)
+      })
+  }, 1000)
 
   const changeSearchInput = (e) => {
     querySearch(e.target.value)

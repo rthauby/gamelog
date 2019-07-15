@@ -21,20 +21,20 @@ class App extends React.Component {
   }
 
   handleResults(results) {
-    // this.setState({
-    //   results,
-    // })
+    this.setState({
+      results,
+    })
   }
 
   render() {
     return (
       <div className='App'>
         <NavBar handler={this.handleResults} />
+        <SearchList results={this.state.results} />
         <BrowserRouter>
           <Switch>
             <Route path='/' exact />
             <Route path='/list' component={GameList} />
-            <Route path='/search/:query' component={SearchList} />
           </Switch>
         </BrowserRouter>
       </div>
