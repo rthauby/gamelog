@@ -30,14 +30,14 @@ bower_components
 .lock-wscript
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
+frontend/build/Release
 
 # Dependency directories
-node_modules/
-jspm_packages/
+frontend/node_modules/
+frontend/jspm_packages/
 
 # TypeScript v1 declaration files
-typings/
+frontend/typings/
 
 # Optional npm cache directory
 .npm
@@ -55,8 +55,8 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
-.env.local
+frontend/.env
+frontend/.env.local
 
 # next.js build output
 .next
@@ -71,7 +71,7 @@ typings/
 /coverage
 
 # production
-/build
+/frontend/build
 
 # misc
 .DS_Store
