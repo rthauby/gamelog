@@ -21,6 +21,7 @@ class App extends React.Component {
   }
 
   handleResults(results) {
+    console.log(results)
     this.setState({
       results,
     })

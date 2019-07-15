@@ -20,7 +20,7 @@ function fetchUrlFromAPI(game) {
     method: 'GET',
   })
     .then(response => {
-        return response.data[0].url
+        return response.data[0].url.replace('t_thumb','t_screenshot_med_2x')
     })
     .catch(err => {
         return err
