@@ -5,7 +5,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 
 import config from '../config'
 
-const DEFAULT_URL = 'https://material-ui.com/static/images/cards/paella.jpg'
+const DEFAULT_URL = 'https://via.placeholder.com/350x150?text=No+Image'
 
 const useStyles = makeStyles(theme => ({
   media: {
