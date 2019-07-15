@@ -10,7 +10,8 @@ const config = {
     local : {
       urls: {
         list: 'http://127.0.0.1:8000/api/games?format=json',
-        search: 'http://127.0.0.1:8000/api/games/search/'
+        search: 'http://127.0.0.1:8000/api/games/search/',
+        artwork: 'http://127.0.0.1:8000/api/games/artwork/',
       }
     }
   }

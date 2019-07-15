@@ -78,7 +78,6 @@ export default function PrimarySearchAppBar(props) {
   const querySearch = debounce((query) => {
     axios.get(config.api.local.urls.search + query)
       .then((res) => {
-        console.log(res.data)
         const games = res.data.map((game) => {
           return {
             title: game.name,

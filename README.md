@@ -1,5 +1,5 @@
 # Game Log
-A webapp to log games I own
+A webapp to log games I own. Written in react + django
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
