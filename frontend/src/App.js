@@ -17,24 +17,22 @@ class App extends React.Component {
       results : []
     }
 
-    this.handleResults = this.handleResults.bind(this)
+    this.handleQuery = this.handleQuery.bind(this)
   }
 
-  handleResults(results) {
-    this.setState({
-      results,
-    })
+  handleQuery(query, history) {
+    history.push('/search/' + query)
   }
 
   render() {
     return (
       <div className='App'>
-        <NavBar handler={this.handleResults} />
-        <SearchList results={this.state.results} />
+
         <BrowserRouter>
+          <Route path='/' render={(props) => <NavBar {...props} handler={this.handleQuery} />} />
           <Switch>
-            <Route path='/' exact />
             <Route path='/list' component={GameList} />
+            <Route path='/search/:query' render={(props) => <SearchList {...props} />} />
           </Switch>
         </BrowserRouter>
       </div>
