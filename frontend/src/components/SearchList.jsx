@@ -1,6 +1,7 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import axios from 'axios'
+import Typography from '@material-ui/core/Typography'
 
 import config from '../config'
 
@@ -53,13 +54,18 @@ class SearchList extends React.Component {
 
   render() {
     return (
-      <Grid container spacing={10} style={{marginTop: '56px'}}>
-        {this.state.results ? this.state.results.map((game) => {
-          return <Grid key={game.id} item xs={12} sm={6} lg={4} xl={3}>
-            <Game game={game}/>
-          </Grid>
-        }) : null}
-      </Grid>
+      <div style={{marginTop: '100px', padding: '0 24px'}}>
+        <Typography component="h3">
+          Search Results
+        </Typography>
+        <Grid container spacing={10}>
+          {this.state.results ? this.state.results.map((game) => {
+            return <Grid key={game.id} item xs={12} sm={6} lg={4} xl={3}>
+              <Game game={game}/>
+            </Grid>
+          }) : null}
+        </Grid>
+      </div>
     )
   }
 }

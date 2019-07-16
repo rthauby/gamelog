@@ -1,6 +1,7 @@
 import React from 'react'
 import NavBar from './components/Navbar'
 import SearchList from './components/SearchList.jsx'
+import './index.css'
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
@@ -31,7 +32,7 @@ class App extends React.Component {
         <BrowserRouter>
           <Route path='/' render={(props) => <NavBar {...props} handler={this.handleQuery} />} />
           <Switch>
-            <Route path='/list' component={GameList} />
+            <Route path='/' exact component={GameList} />
             <Route path='/search/:query' render={(props) => <SearchList {...props} />} />
           </Switch>
         </BrowserRouter>

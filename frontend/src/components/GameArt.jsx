@@ -5,12 +5,12 @@ import CardMedia from '@material-ui/core/CardMedia'
 
 import config from '../config'
 
-const DEFAULT_URL = 'https://via.placeholder.com/350x150?text=No+Image'
+const DEFAULT_URL = 'https://via.placeholder.com/350x350?text=No+Image'
 
 const useStyles = makeStyles(theme => ({
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '100%', // 16:9
   },
 }))
 
@@ -20,7 +20,7 @@ function fetchUrlFromAPI(game) {
     method: 'GET',
   })
     .then(response => {
-        return response.data[0].url.replace('t_thumb','t_screenshot_med_2x')
+        return response.data[0].url.replace('t_thumb','t_cover_big')
     })
     .catch(err => {
         return err
