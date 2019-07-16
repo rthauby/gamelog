@@ -5,7 +5,7 @@ import requests
 from .models import Game
 from .serializers import GameSerializer
 
-API_KEY = '42d55ddbe4c90877ad7f4e41a13daf30'
+API_KEY = 'f88969b6f429963a6b586bd5966c7b80'
 
 class ListGame(generics.ListAPIView):
   queryset = Game.objects.all()
