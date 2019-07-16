@@ -36,7 +36,7 @@ export default function SearchList(props) {
       <Grid container spacing={10}>
         {results ? results.map((game) => {
           return <Grid key={game.id} item xs={12} sm={6} lg={4} xl={3}>
-            <Game game={game}/>
+            <Game game={game} showFav={true} />
           </Grid>
         }) : null}
       </Grid>

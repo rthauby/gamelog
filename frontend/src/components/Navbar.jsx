@@ -6,6 +6,8 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import InputBase from '@material-ui/core/InputBase'
 import SearchIcon from '@material-ui/icons/Search'
+import Link from '@material-ui/core/Link'
+import { Link as RouterLink } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -15,10 +17,10 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
+    color: 'white',
+    '&:hover' : {
+      'text-decoration': 'none',
+    }
   },
   search: {
     position: 'relative',
@@ -83,9 +85,9 @@ export default function PrimarySearchAppBar(props) {
     <div className={classes.grow}>
       <AppBar position='fixed'>
         <Toolbar>
-          <Typography className={classes.title} variant='h6' noWrap>
+          <Link className={classes.title} variant='h6' component={RouterLink} noWrap to='/'>
             Gamelog
-          </Typography>
+          </Link>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />

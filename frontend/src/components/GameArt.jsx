@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import CardMedia from '@material-ui/core/CardMedia'
+import { withStyles } from '@material-ui/core/styles'
 
 import config from '../config'
 
 const DEFAULT_URL = 'https://via.placeholder.com/350x350?text=No+Image'
+
+const styles = {
+  art: {
+    height: 0,
+    paddingTop: '100%',
+  },
+}
 
 function fetchUrlFromAPI(game) {
   return axios({
@@ -30,7 +38,8 @@ async function getUrl(game, callback) {
   }
 }
 
-export default function GameArt(props) {
+function GameArt(props) {
+  const { classes } = props
   const game = props.game
   const [url, setUrl] = useState(null)
 
@@ -39,14 +48,15 @@ export default function GameArt(props) {
   },[game])
 
   return (
-    <div>
+    <div className="testing">
     { url ?
-    <CardMedia
-      style={{height: 0, paddingTop: '100%'}}
-      image={url}
-      title={props.game.name}
-    />
+      <CardMedia
+        className={classes.art}
+        image={url}
+        title={props.game.name}
+      />
     : null }
     </div>
   )
 }
+export default withStyles(styles)(GameArt)
