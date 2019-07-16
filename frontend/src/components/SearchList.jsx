@@ -53,7 +53,7 @@ class SearchList extends React.Component {
 
   render() {
     return (
-      <Grid container spacing={10} style={{padding: '24px'}}>
+      <Grid container spacing={10} style={{marginTop: '56px'}}>
         {this.state.results ? this.state.results.map((game) => {
           return <Grid key={game.id} item xs={12} sm={6} lg={4} xl={3}>
             <Game game={game}/>

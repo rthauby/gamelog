@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
-    marginRight: theme.spacing(2),
+    marginRight: 0,
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
@@ -81,7 +81,7 @@ export default function PrimarySearchAppBar(props) {
   }
   return (
     <div className={classes.grow}>
-      <AppBar position='static'>
+      <AppBar position='fixed'>
         <Toolbar>
           <Typography className={classes.title} variant='h6' noWrap>
             Gamelog
