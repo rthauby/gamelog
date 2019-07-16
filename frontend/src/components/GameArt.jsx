@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import CardMedia from '@material-ui/core/CardMedia'
 
@@ -25,41 +25,28 @@ async function getUrl(game, callback) {
     let result = await fetchUrlFromAPI(game)
     callback(result)
     return result
+  } else {
+    callback(DEFAULT_URL)
   }
 }
 
-class GameArt extends React.Component {
-  constructor(props) {
-    super(props);
+export default function GameArt(props) {
+  const game = props.game
+  const [url, setUrl] = useState(null)
 
-    this.state = {
-      url : ''
-    }
+  useEffect(() => {
+    getUrl(game, setUrl)
+  },[game])
 
-    this.setState.bind(this)
-  }
-
-  componentDidMount() {
-    getUrl(this.props.game, (url) => {
-      this.setState({
-        url,
-      })
-    })
-  }
-
-  render() {
-    return (
-      <div>
-      { this.state.url ?
-      <CardMedia
-        style={{height: 0, paddingTop: '100%'}}
-        image={this.state.url}
-        title={this.props.game.name}
-      />
-      : null }
-      </div>
-    )
-  }
+  return (
+    <div>
+    { url ?
+    <CardMedia
+      style={{height: 0, paddingTop: '100%'}}
+      image={url}
+      title={props.game.name}
+    />
+    : null }
+    </div>
+  )
 }
-
-export default GameArt
