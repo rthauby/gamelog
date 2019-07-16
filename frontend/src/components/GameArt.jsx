@@ -48,7 +48,7 @@ function GameArt(props) {
   },[game])
 
   return (
-    <div className="testing">
+    <div>
     { url ?
       <CardMedia
         className={classes.art}

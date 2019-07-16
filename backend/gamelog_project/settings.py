@@ -131,7 +131,8 @@ STATIC_URL = '/static/'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSIONS_CLASSES': [
         'rest_framework.permissions.AllowAny',
-    ]
+    ],
+    'DATETIME_FORMAT': '%s',
 }
 
 CORS_ORIGIN_WHITELIST = (
