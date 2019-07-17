@@ -16,7 +16,6 @@ async function getResults(query, callback) {
           ...game
         }
       })
-      console.log(games)
       callback(games)
     })
 }

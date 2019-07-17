@@ -28,7 +28,7 @@ const handleFav = (e, game, url) => {
   }
   axios.post(config.api.local.urls.create, gameData)
     .then(response => {
-      console.log(response)
+      alert('Game saved to your collection')
     })
     .catch(err => {
         return err
