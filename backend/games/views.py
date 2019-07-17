@@ -1,4 +1,4 @@
-from rest_framework import generics
+from rest_framework import generics, viewsets
 from django.http import HttpResponse
 import requests
 
@@ -7,11 +7,15 @@ from .serializers import GameSerializer
 
 API_KEY = 'f88969b6f429963a6b586bd5966c7b80'
 
-class ListGame(generics.ListAPIView):
-  queryset = Game.objects.all()
-  serializer_class = GameSerializer
+# class ListGame(generics.ListAPIView):
+#   queryset = Game.objects.all()
+#   serializer_class = GameSerializer
 
-class DetailGame(generics.RetrieveAPIView):
+# class DetailGame(generics.RetrieveAPIView):
+#   queryset = Game.objects.all()
+#   serializer_class = GameSerializer
+
+class GameViewSet(viewsets.ModelViewSet):
   queryset = Game.objects.all()
   serializer_class = GameSerializer
 

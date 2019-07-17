@@ -47,6 +47,10 @@ function GameArt(props) {
     getUrl(game, setUrl)
   },[game])
 
+  if(url){
+    props.callback(url)
+  }
+
   return (
     <div>
     { url ?
